@@ -30,16 +30,37 @@ const form = () => {
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="modalidade">
-          <Form.Label column sm={2}>Modalidade:</Form.Label>
-          <Form.Control type="text" {...register('modalidade')} />
+        <Form.Group as={Row} className="mb-3" controlId="cpf">
+          <Form.Label column sm={2}>C:</Form.Label>
+          <Form.Control type="text" {...register('cpf')} />
           <Col sm={10}>
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="duracao">
-          <Form.Label column sm={2}>Duracao:</Form.Label>
-          <Form.Control type="text" {...register('duracao')} />
+        <Form.Group as={Row} className="mb-3" controlId="matricula">
+          <Form.Label column sm={2}>Matrícula:</Form.Label>
+          <Form.Control type="text" {...register('matricula')} />
+          <Col sm={10}>
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="email">
+          <Form.Label column sm={2}>Email:</Form.Label>
+          <Form.Control type="text" {...register('email')} />
+          <Col sm={10}>
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="matricula">
+          <Form.Label column sm={2}>Matrícula:</Form.Label>
+          <Form.Control type="text" {...register('matricula')} />
+          <Col sm={10}>
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="matricula">
+          <Form.Label column sm={2}>Matrícula:</Form.Label>
+          <Form.Control type="text" {...register('matricula')} />
           <Col sm={10}>
           </Col>
         </Form.Group>

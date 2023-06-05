@@ -8,29 +8,29 @@ import axios from 'axios'
 
 const index = () => {
 
-  const [cursos, setCursos] = useState([])
+  const [alunos, setAlunos] = useState([])
 
   useEffect(() => {
     getALL()
   }, [])
 
   function getALL() {
-    axios.get('/api/cursos').then(resultado => {
-      setCursos(resultado.data);
+    axios.get('/api/alunos').then(resultado => {
+      setAlunos(resultado.data);
     })
   }
 
   function excluir(id) {
     if (confirm('Deseja excluir?')) {
-      axios.delete('/api/cursos/' + id)
+      axios.delete('/api/alunos/' + id)
       getALL()
     }
   }
-  console.log(cursos)
+  console.log(alunos)
   return (
-    <Cabecalho titulo='Cursos'>
+    <Cabecalho titulo='alunos'>
 
-      <Link href={'/cursos/form'} className="btn btn-primary mb-2"><RxArrowBottomLeft />Novo</Link>
+      <Link href={'/alunos/form'} className="btn btn-primary mb-2"><RxArrowBottomLeft />Novo</Link>
 
       <Table striped bordered hover variant="dark">
         <thead>
@@ -43,10 +43,10 @@ const index = () => {
           </tr>
         </thead>
         <tbody>
-          {cursos.map((item, i) => (
+          {alunos.map((item, i) => (
             <tr key={item.id}>
               <td>
-                <Link href={'/cursos/' + i} className='btn btn-warning'>
+                <Link href={'/alunos/' + i} className='btn btn-warning'>
                   <BsFillPencilFill className='text-danger' />
                 </Link>
               </td>

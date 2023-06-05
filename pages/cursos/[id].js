@@ -1,21 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Cabecalho from '../../components/Cabecalho'
 import { Button, Col, Form } from 'react-bootstrap'
+import { v4 as uuid } from 'uuid'
 import Row from 'react-bootstrap/Row';
 import { useForm } from 'react-hook-form'
 import { GrDocumentUpload } from "react-icons/Gr";
 import { BiChevronLeft } from "react-icons/bi";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
-import axios from 'axios';
 
 const form = () => {
 
-  const { register, handleSubmit } = useForm()
-  const { push } = useRouter()
+  const { register, handleSubmit, setValue } = useForm()
+  const { push, query } = useRouter()
+
+  useEffect(() => {
+    if (query.id) {
+      const cursos = JSON.parse(window.localStorage.getItem('cursos'))
+      const curso = cursos[query.id]
+
+      for (let atributo in curso) {
+        setValue(atributo, curso[atributo])
+      }
+
+    }
+  }, [query.id])
+
+
 
   function salvar(dados) {
-    axios.post('/api/cursos', dados)
+    const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
+    const id = uuid(dados)
+    dados = { ...dados, id }
+    cursos.splice(query.id, 1, dados)
+    window.localStorage.setItem('cursos', JSON.stringify(cursos))
     push('/cursos')
   }
 

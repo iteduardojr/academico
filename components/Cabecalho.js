@@ -7,10 +7,10 @@ const Cabecalho = (props) => {
     <>
     <Navbar bg="dark" variant="dark">
         <Container>
-            <Navbar.Brand href="/cursos">Home</Navbar.Brand>
+           
                 
             <Nav className="me-auto">
-                <NavDropdown title='Acadêmico'>
+                <NavDropdown  href="/cursos" title='Acadêmico'>
                 <NavDropdown.Item href="/cursos">Cursos</NavDropdown.Item>
                 <NavDropdown.Item href="/disciplinas">Disciplinas</NavDropdown.Item>
                 <NavDropdown.Item href="/alunos">Alunos</NavDropdown.Item>
