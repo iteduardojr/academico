@@ -28,7 +28,7 @@ const index = () => {
   }
   console.log(cursos)
   return (
-    <Cabecalho titulo='Cursos'>
+    <Cabecalho titulo='cursos'>
 
       <Link href={'/cursos/form'} className="btn btn-primary mb-2"><RxArrowBottomLeft />Novo</Link>
 
@@ -37,21 +37,21 @@ const index = () => {
           <tr>
             <th>Editar</th>
             <th>Excluir</th>
-            <th>Cursos</th>
-            <th>Modalidade</th>
-            <th>Duração</th>
+            <th>Nome</th>
+            <th>Capacidade</th>
+            <th>Tipo</th>
           </tr>
         </thead>
         <tbody>
           {cursos.map((item, i) => (
             <tr key={item.id}>
               <td>
-                <Link href={'/cursos/' + i} className='btn btn-warning'>
+                <Link href={'/cursos/' + item.id} className='btn btn-warning'>
                   <BsFillPencilFill className='text-danger' />
                 </Link>
               </td>
               <td>
-                <Button className='btn-warning' onClick={() => excluir(i)}>
+                <Button className='btn-warning' onClick={() => excluir(item.id)}>
                   <BsFillTrash3Fill className='text-danger' />
                 </Button>
               </td>

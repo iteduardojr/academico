@@ -16,11 +16,11 @@ const form = () => {
 
   useEffect(() => {
     if (query.id) {
-      axios.get('/api/cursos/' + query.id).then(resultado => {
-        const cursos = resultado.data
+      axios.get('/api/diciplinas/' + query.id).then(resultado => {
+        const diciplinas = resultado.data
 
-        for (let atributo in cursos) {
-          setValue(atributo, cursos[atributo])
+        for (let atributo in diciplinas) {
+          setValue(atributo, diciplinas[atributo])
         }
       })
     }
@@ -29,38 +29,27 @@ const form = () => {
 
 
   function salvar(dados) {
-    axios.put('/api/cursos/' + dados.id, dados)
-    push('/cursos')
+    axios.put('/api/diciplinas/' + dados.id, dados)
+    push('/diciplinas')
   }
 
   return (
     <Cabecalho titulo='Formulário'>
 
-<Form>
+      <Form>
         <Form.Group as={Row} className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control type="text" {...register('nome')} />
-          <Col sm={10}>
-          </Col>
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="modalidade">
-          <Form.Label>Modalidade:</Form.Label>
-          <Form.Control type="text" {...register('modalidade')} />
-          <Col sm={10}>
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3" controlId="duracao">
-          <Form.Label>Duração:</Form.Label>
-          <Form.Control type="text" {...register('duracao')} />
-          <Col sm={10}>
-          </Col>
+        <Form.Group as={Row} className="mb-3" controlId="curso">
+          <Form.Label>Curso:</Form.Label>
+          <Form.Control type="text" {...register('curso')} />
         </Form.Group>
 
         <div className="mb-3 text-center">
           <Button type="submit" onClick={handleSubmit(salvar)}><GrDocumentUpload className='me-1' />Salvar</Button>
-          <Link href={'/cursos'} className='ms-2 btn btn-danger'><BiChevronLeft className='me-1' />Voltar</Link>
+          <Link href={'/diciplinas'} className='ms-2 btn btn-danger'><BiChevronLeft className='me-1' />Voltar</Link>
         </div>
       </Form>
 

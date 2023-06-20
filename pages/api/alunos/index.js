@@ -5,7 +5,7 @@ import { v4 } from "uuid"
 
 export default function handler(req, res) {
     if (req.method == 'GET') {
-        get(child(ref(db), 'alunos')).then(snapshot => {
+        get(child(ref(db), 'alunos')).then(snapshot => { 
             const retorno = []
             snapshot.forEach(item => {
                 retorno.push(item.val())

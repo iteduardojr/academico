@@ -10,9 +10,9 @@ const Cabecalho = (props) => {
            
                 
             <Nav className="me-auto">
-                <NavDropdown  href="/cursos" title='Acadêmico'>
+                <NavDropdown  href="/" title='Acadêmico'>
                 <NavDropdown.Item href="/cursos">Cursos</NavDropdown.Item>
-                <NavDropdown.Item href="/disciplinas">Disciplinas</NavDropdown.Item>
+                <NavDropdown.Item href="/diciplinas">Disciplinas</NavDropdown.Item>
                 <NavDropdown.Item href="/alunos">Alunos</NavDropdown.Item>
                 <NavDropdown.Item href="/professores">Professores</NavDropdown.Item>
                 <NavDropdown.Item href="/salas">Salas</NavDropdown.Item>

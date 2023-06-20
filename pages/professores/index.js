@@ -8,29 +8,29 @@ import axios from 'axios'
 
 const index = () => {
 
-  const [alunos, setAlunos] = useState([])
+  const [professores, setProfessores] = useState([])
 
   useEffect(() => {
     getALL()
   }, [])
 
   function getALL() {
-    axios.get('/api/alunos').then(resultado => {
-      setAlunos(resultado.data);
+    axios.get('/api/professores').then(resultado => {
+      setProfessores(resultado.data);
     })
   }
 
   function excluir(id) {
     if (confirm('Deseja excluir?')) {
-      axios.delete('/api/alunos/' + id)
+      axios.delete('/api/professores/' + id)
       getALL()
     }
   }
-  console.log(alunos)
+  console.log(professores)
   return (
-    <Cabecalho titulo='Alunos'>
+    <Cabecalho titulo='Professores'>
 
-      <Link href={'/alunos/form'} className="btn btn-primary mb-2"><RxArrowBottomLeft />Novo</Link>
+      <Link href={'/professores/form'} className="btn btn-primary mb-2"><RxArrowBottomLeft />Novo</Link>
 
       <Table striped bordered hover variant="dark">
         <thead>
@@ -40,18 +40,22 @@ const index = () => {
             <th>Nome</th>
             <th>Cpf</th>
             <th>Matrícula</th>
+            <th>Salário</th>
             <th>Email</th>
             <th>Telefone</th>
+            <th>Cep</th>
+            <th>Logradouro</th>
+            <th>Complemento</th>
             <th>Número</th>
             <th>Bairro</th>
 
           </tr>
         </thead>
         <tbody>
-          {alunos.map((item, i) => (
+          {professores.map((item, i) => (
             <tr key={item.id}>
               <td>
-                <Link href={'/alunos/' + item.id} className='btn btn-warning'>
+                <Link href={'/professores/' + item.id} className='btn btn-warning'>
                   <BsFillPencilFill className='text-danger' />
                 </Link>
               </td>
@@ -63,12 +67,14 @@ const index = () => {
               <td>{item.nome}</td>
               <td>{item.cpf}</td>
               <td>{item.matricula}</td>
+              <td>{item.salario}</td>
               <td>{item.email}</td>
               <td>{item.telefone}</td>
+              <td>{item.cep}</td>
+              <td>{item.logradouro}</td>
               <td>{item.complemento}</td>
               <td>{item.numero}</td>
               <td>{item.bairro}</td>
-              <td>{item.logradouro}</td>
             </tr>
           ))}
 

@@ -8,17 +8,17 @@ import { BiChevronLeft } from "react-icons/bi";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import axios from 'axios';
-import cursoValidator from '../../validators/cursoValidator';
+import salaValidator from '../../validators/salaValidator';
 import { mask } from 'remask';
 
 const form = () => {
 
-  const { register, handleSubmit, formState:{errors}, setValue } = useForm()
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm()
   const { push } = useRouter()
 
   function salvar(dados) {
-    axios.post('/api/cursos', dados)
-    push('/cursos')
+    axios.post('/api/salas', dados)
+    push('/salas')
   }
 
   function handleChange(event) {
@@ -35,28 +35,28 @@ const form = () => {
       <Form>
         <Form.Group as={Row} className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
-          <Form.Control isInvalid={errors.nome} type="text" {...register('nome', cursoValidator.nome)} />
+          <Form.Control isInvalid={errors.nome} type="text" {...register('nome', salaValidator.nome)} />
           {
             errors.nome &&
             <small className='text-danger'>{errors.nome.message}</small>
           }
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="modalidade">
-          <Form.Label>Modalidade:</Form.Label>
-          <Form.Control isInvalid={errors.modalidade} type="text" {...register('modalidade', cursoValidator.modalidade)} />
+        <Form.Group as={Row} className="mb-3" controlId="capacidade">
+          <Form.Label>Capacidade:</Form.Label>
+          <Form.Control isInvalid={errors.capacidade} type="text" mask='999' {...register('capacidade', salaValidator.capacidade)} onChange={handleChange} />
           {
-            errors.modalidade &&
-            <small className='text-danger'>{errors.modalidade.message}</small>
+            errors.capacidade &&
+            <small className='text-danger'>{errors.capacidade.message}</small>
           }
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="duracao">
-          <Form.Label>duracao:</Form.Label>
-          <Form.Control isInvalid={errors.duracao} mask='999' type="text" {...register('duracao', cursoValidator.duracao)} onChange={handleChange} />
+        <Form.Group as={Row} className="mb-3" controlId="tipo">
+          <Form.Label>Tipo:</Form.Label>
+          <Form.Control isInvalid={errors.tipo} type="text" {...register('tipo', salaValidator.tipo)} />
           {
-            errors.duracao  &&
-            <small className='text-danger'>{errors.duracao.message}</small>
+            errors.tipo &&
+            <small className='text-danger'>{errors.tipo.message}</small>
           }
         </Form.Group>
 

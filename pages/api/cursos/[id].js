@@ -12,7 +12,7 @@ import { db } from "../../../services/firebase"
     } else if (req.method == 'PUT') {
         const dados = req.body
 
-        update(ref(db, `cursos/${id}`), dados)  
+        update(ref(db, `cursos/${id}`), dados)
         res.status(200).json(dados)
 
     } else if(req.method =='DELETE') {

@@ -12,7 +12,6 @@ export default function handler(req, res) {
             })
             res.status(200).json(retorno)
         })
-        
     } else if (req.method == 'POST'){
         const id = v4()
         const dados = req.body

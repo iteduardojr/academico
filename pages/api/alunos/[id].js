@@ -1,12 +1,12 @@
 import { child, get, ref, remove, update } from "firebase/database"
 import { db } from "../../../services/firebase"
 
- export default function handler(req, res) {
+export default function handler(req, res) {
 
     const id = req.query.id
 
-    if (req.method == 'GET'){
-        get(child(ref(db), 'alunos/' + id)).then(snapshot =>{
+    if (req.method == 'GET') {
+        get(child(ref(db), 'alunos/' + id)).then(snapshot => {
             res.status(200).json(snapshot.val())
         })
     } else if (req.method == 'PUT') {
@@ -15,8 +15,8 @@ import { db } from "../../../services/firebase"
         update(ref(db, `alunos/${id}`), dados)
         res.status(200).json(dados)
 
-    } else if(req.method =='DELETE') {
+    } else if (req.method == 'DELETE') {
         remove(ref(db, 'alunos/' + id))
         res.status(200).json(id)
     }
- }
+}
